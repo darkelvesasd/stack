@@ -1,22 +1,16 @@
 class Solution {
 public:
-    string removeDuplicates(string s) {
+string removeDuplicates(string s) {
 	string stk;
-	char top = NULL;
 	for (auto c : s)
 	{
-		if (top == c)
+		if (stk.size()&&c == stk.back()  )
 		{
-			while (top == c)
-			{
-				stk.erase(stk.size() - 1);
-				top = stk[max(0,(int)stk.size() - 1)];
-			}
+			stk.pop_back();
 		}
 		else
 		{
 			stk += c;
-			top = stk[stk.size() - 1];
 		}
 	}
 	return stk;
